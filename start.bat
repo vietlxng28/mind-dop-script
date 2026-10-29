@@ -57,10 +57,8 @@ if not errorlevel 1 (
         pause
         exit /b 1
     )
-    cd /d "%FE_DIR%"
-    start "Mind Dop Frontend" /b python -m http.server %FE_PORT% >> "%SCRIPT_DIR%frontend.log" 2>&1
-    cd /d "%SCRIPT_DIR%"
-    echo   -^> Frontend đã được khởi chạy ngầm [log: frontend.log].
+    start "Mind Dop Frontend" /b cmd /c "npx -y serve -s "%FE_DIR%" -l %FE_PORT% >> "%SCRIPT_DIR%frontend.log" 2>&1"
+    echo   -^> Frontend SPA đã được khởi chạy ngầm bằng Node.js [log: frontend.log].
 )
 
 :: 3. Kiểm tra sẵn sàng và mở trình duyệt
